@@ -1,0 +1,1215 @@
+/* =========== Google Fonts ============ */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+/* =============== Globals ============== */
+* {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #2a2185;
+  --white: rgb(255, 255, 255);
+  --gray: #f5f5f5;
+  --black1: #222;
+  --black2: #999;
+
+  --primary:#eeeeee;
+        --secondery:rgb(34, 58, 124);
+        --green:#6ecc26;
+        --secondery-light:rgb(34,124,112,0.2);
+        --secondery-light-2:rgb(127,183,126,0.1);
+        --white:#ffff;
+        --black:#393e46;
+
+        --shadow:0px 2px 8px 0px var(var(--secondery-light));
+
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color:rgb(224, 224, 224);
+ 
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+/* =============== Navigation ================ */
+
+.icon-image {
+  height: 65px;
+  width: 65px;
+}
+
+.navigation {
+  position: fixed;
+  width: 240px;
+  height: 100%;
+  background: var(--blue);
+  border-left: 10px solid var(--blue);
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.navigation.active {
+  width: 80px;
+}
+
+.navigation ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navigation ul li {
+  position: relative;
+  width: 200px;
+  list-style: none;
+  border-radius: 20px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+  background-color:rgb(224, 224, 224);
+}
+
+.navigation ul li:nth-child(1) {
+  margin-bottom: 40px;
+  pointer-events: none;
+  font-size: 14px;
+}
+
+.navigation ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  color: var(--blue);
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 75px;
+  text-align: center;
+}
+
+.navigation ul li a .icon ion-icon {
+  font-size: 1.75rem;
+}
+
+.navigation ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+/* ===================== Main ===================== */
+.main {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 250px;
+  min-height: 100vh;
+  background: rgb(224, 224, 224);
+  transition: 0.5s;
+}
+
+.main.active {
+  width: calc(100% - 80px);
+  left: 80px;
+}
+
+.topbar {
+  width: 100%;
+  height: 55px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+hr {
+  margin-bottom: 10px;
+}
+
+.toggle {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.topbar-title h3 {
+  font-size: 18px;
+  letter-spacing: 0.05cm;
+  animation: colorChange 10s infinite;
+  
+}
+
+@keyframes colorChange {
+  0% {
+    color: var(--black2);
+  }
+  25% {
+    color: var(--black1);
+  }
+  50% {
+    color: green;
+  }
+  75% {
+    color: var(--black1);
+  }
+  100% {
+    color: var(--black2);
+  }
+}
+
+.date-icons {
+  display: flex;
+  align-items: center;
+}
+
+.calculator-icon {
+  background: var(--blue);
+  color: var(--gray);
+  width: 30px;
+  height: 30px;
+  font-size: 25px;
+  padding: 2px 2px 2px 2px;
+  border-radius: 2px;
+  margin-right: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.calculator-icon:hover::before {
+  content: "Calculator"; 
+  position: absolute;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.calculator-icon:hover::before {
+  opacity: 1;
+}
+
+.calculator-container {
+  display: none;
+  position: fixed;
+  top: 50px;
+  left: 66%;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.calculator-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+}
+
+.calculator-buttons button {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+
+
+/* ======================= Sections ====================== */
+.section {
+  display: none;
+  padding: 20px;
+}
+
+/* ======================= Cards ====================== */
+.cardBox {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.cardBox .card {
+  position: relative;
+  background: var(--white);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.cardBox .card .numbers {
+  position: relative;
+  font-weight: 500;
+  font-size: 2.5rem;
+  color: var(--blue);
+}
+
+.cardBox .card .cardName {
+  color: var(--black2);
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+
+.cardBox .card .iconBx {
+  font-size: 3.5rem;
+  color: var(--black2);
+}
+
+.cardBox .card:hover {
+  background: var(--blue);
+}
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .iconBx {
+  color: var(--white);
+}
+
+/* ================== Order Details List ============== */
+
+/* Search */
+.search {
+  position: relative;
+  width: 200px;
+  margin: -25px 800px 0px;
+}
+
+.search label {
+  position: relative;
+  width: 100%;
+}
+
+.search label input {
+  width: 100%;
+  height: 30px;
+  border-radius: 20px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  font-size: 15px;
+  outline: none;
+  border: 1px solid var(--black2);
+}
+
+.search label ion-icon {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 1.2rem;
+}
+
+/* Search */
+.details {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+  /* margin-top: 10px; */
+}
+
+.details .recentOrders {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
+.details .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.cardHeader h2 {
+  font-weight: 600;
+  color: var(--blue);
+}
+.cardHeader .btn {
+  position: relative;
+  padding: 5px 10px;
+  background: var(--blue);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+}
+
+/*======tabular-wrapper========*/
+
+.tabular-wrapper{
+  background: #fff;
+  margin-top: 1rem;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 10PX;
+  padding: 2rem;
+}
+
+.table-container{
+  width: 100%;
+  margin-top: 20px;
+}
+
+/*====== TABLES ========*/
+table{
+  width: 100%;
+  border-collapse: collapse;
+  border: var(--gray) solid 1px;
+}
+
+thead{
+  background: var(--gray);
+}
+
+th{
+  padding: 15px;
+  text-align: left;
+}
+
+tbody{
+  background: #f2f2f2;
+}
+
+td{
+  padding: 15px;
+  font-size: 15px;
+  color: #333;
+}
+
+tr:nth-child(even){
+  background: #fff;
+}
+
+/*======Report Section========*/
+
+/* Report Tools */
+.report-tools {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.report-tools button{
+  padding: 5px;
+  border-radius: 5px;
+  align-content: center;
+  display: flex;
+  margin: 0px 5px 0px 5px;
+  border: var(--black2) solid 1px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.report-tools button ion-icon {
+  padding-right: 5px;
+}
+
+.report-tools button:hover {
+  border: var(--black2) solid 1px;
+  background-color: var(--black2);
+  color: white;
+  transition: 300ms;
+  cursor: pointer;
+}
+
+.report-tools button ion-icon{
+  font-size: 15px;
+}
+
+/* Report Header */
+.report-header {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--blue);
+  margin-top: 1rem;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 10px 10PX 0px 0px;
+  padding: 2rem;
+  padding-bottom: 1rem;
+  color: var(--gray);
+}
+
+.business-name {
+  font-size: 20px;
+  padding-bottom: 5px;
+}
+
+.balance-sheet{
+  font-size: 20px;
+}
+
+.report-logo img {
+  width: 100px;
+  height: 100px;
+}
+
+/* Report Body */
+.report-body {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.report-body table{
+  border: var(--blue) solid 1px;
+  border-radius: 0px 0px 10px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.report-body tbody{
+  background:white;
+  color: var(--black1);
+  width: 100%;
+  border-radius: 0px 0px 10px 10px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.report-body th,td{
+  background:white;
+  color: var(--black1);
+  padding: 10px;
+  width: 70%;
+  padding-left: 40px;
+  font-size: 15px;
+}
+
+/* Leger Section */
+
+/*Leger Header */
+
+/*Leger Body */
+.leger-body th,td{
+  padding: 10px;
+}
+
+/* ================== SECTION HEADER ============== */
+.section-header-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  margin-right: 5px;
+}
+
+.add-button button {
+  background-color: var(--blue);
+  color: var(--gray);
+  width: 100%;
+  font-weight: bold;
+}
+
+.add-button button:hover {
+  background-color: white;
+  color: var(--blue);
+  width: 100%;
+  font-weight: bold;
+}
+
+.add-button button ion-icon{
+  padding-right: 5px;
+  font-size: 17px;
+}
+
+.excel-download-button{
+  margin-left: 10px;
+}
+
+.excel-download-button button {
+  background-color: white;
+  color: var(--blue);
+  width: 100%;
+  font-weight: bold;
+}
+
+.excel-download-button button:hover {
+  transition: 500ms;
+  background-color: var(--blue);
+  color: var(--gray);
+  width: 100%;
+  font-weight: bold;
+}
+
+.section-header-2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.filter-Cetegory {
+  font-size: 14px;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+
+.filter-Cetegory select{
+  padding: 5px;
+  border-radius: 5px;
+  align-content: center;
+  margin: 0px 5px 0px 5px;
+  border: var(--black2) solid 1px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.filter-Cetegory select option{
+  padding: 5px;
+  border-radius: 5px;
+  border: var(--black2) solid 1px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.search-input input {
+  padding: 5px;
+  border-radius: 5px;
+  border: var(--black2) solid 1px;
+  background-color: white;
+}
+
+/* ================== CHECK BOX ============== */
+.checkbox-cell {
+  width: 1%; /* Set a minimum width for the checkbox cell */
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox-container input {
+  opacity: 0;
+  margin-right: 5px; /* Adjust spacing between checkbox and checkmark */
+}
+
+.checkbox-container .checkmark {
+  display: inline-block;
+  border: 1px solid #ccc;
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  background-color: #fff; /* Initial background color */
+}
+
+.checkbox-container input:checked + .checkmark {
+  background-color: var(--blue); /* Background color when checked */
+}
+
+.checkbox-container input:checked + .checkmark:after {
+  content: '\2713'; /* Unicode character for checkmark or any icon you prefer */
+  font-size: 12px;
+  color: #fff; /* Icon color when checked */
+}
+
+/* ================== ACTION BUTTON ============== */
+.action-cell {
+  width: 10%;
+}
+.action-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.action-button p {
+  padding-right: 5px;
+}
+
+.action-button ion-icon {
+  padding-top: 1.5px;
+}
+
+.action-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.action-dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  display: block;
+  text-decoration: none;
+}
+
+.action-dropdown-content a ion-icon{
+  font-size: 16px;
+  padding-right: 10px;
+}
+
+.action-dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.action-dropdown:hover .action-dropdown-content {
+  display: block;
+}
+
+/* ================== SECTION FOOTER ============== */
+.section-footer button{
+  padding: 5px;
+  border-radius: 5px;
+  align-content: center;
+  display: flex;
+  margin: 5px 5px 0px 0px;
+  border: var(--black2) solid 1px;
+  background-color: white;
+  cursor: pointer;
+  color: red;
+}
+
+.section-footer button ion-icon {
+  font-size: 15px;
+  padding-right: 5px;
+}
+
+.section-footer button:hover {
+  border: red solid 1px;
+  background-color: red;
+  color: white;
+  transition: 400ms;
+  cursor: pointer;
+}
+
+/* DOCUMENT FETCH BUTTON */
+.fetch-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+  padding: 2px;
+}
+
+.fetch-button ion-icon {
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-left: 5px;
+}
+
+.fetch-button:hover {
+  background-color: var(--black1);
+  color: white;
+  transition: 400ms;
+  cursor: pointer;
+}
+
+/* POP UP ADD FORM */
+.form {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 80px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--blue);
+  color: white;
+  margin: auto;
+  padding: 0px 0px 0px 20px;
+  border: 0px solid var(--blue);
+  border-radius: 10px 10px 0px 0px;
+  width: 60%;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 35px;
+  padding: 0px 12px 0px 12px;
+  border: 1px solid var(--blue);
+  border-radius: 0px 10px 0px 0px;
+}
+
+.close:hover,
+.close:focus {
+  color: white;
+  text-decoration: none;
+  background-color: red;
+  border: 1px solid red;
+  transition: 300ms;
+  cursor: pointer;
+}
+
+.form-body {
+  display: flex;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 0px solid #888;
+  width: 60%;
+}
+
+/* Input Field */
+.form-body input,textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 20px 20px 0 0;
+  border: 1px solid var(--black2);
+  border-radius: 5px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-body input:focus {
+  border-color: var(--blue);
+  outline: 0;
+  box-shadow: 0rem 0rem 0.2rem 0.1rem var(--blue);
+  border-radius: 5px;
+}
+
+/* Drop Down button */
+.custom-select {
+  position: relative;
+  width: 40%;
+}
+
+.transactions-contets {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leger-names {
+  width: 50%;
+}
+
+.transaction-right-content button {
+  width: 35%;
+  border: 2px solid var(--black1);
+  margin-top: 5px;
+  padding: 5px;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.leger-names .custom-select {
+  width: 100%;
+}
+
+.transaction-right-content {
+  width: 50%;
+  margin-left: 20px;
+}
+
+.transaction-right-content textarea{
+  height: 195px;
+}
+
+.custom-select select {
+  display: none;
+}
+
+.select-selected {
+  background-color: #fefefe;
+  border: 1px solid var(--black2);
+  border-radius: 5px;
+  margin: 20px 0px 0px 0px;
+}
+
+.leger-names .select-selected{
+  margin: 5px 0px 20px 0px;
+}
+
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 35px;
+  right: 15px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: var(--black1) transparent transparent transparent;
+}
+
+.leger-names .select-selected:after {
+  top: 15px;
+}
+
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent var(--black1) transparent;
+  top: 7px;
+}
+
+.select-items div, .select-selected {
+  color: black;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color:var(--black2);
+  cursor: pointer;
+}
+
+.select-items div, .select-selected {
+  color: black;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color:var(--black2);
+  cursor: pointer;
+}
+
+.select-items {
+  position: absolute;
+  background-color: #fefefe;
+  border-radius: 5px;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Add Form footer */
+.form-footer {
+  display: flex;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px 20px 20px 20px;
+  border: 0px solid #888;
+  border-radius: 0px 0px 10px 10px;
+  width: 60%;
+}
+
+.form-footer .report-tools {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px 20px 0px 20px;
+  border: 0px solid #888;
+  border-radius: 0px 0px 10px 10px;
+  width: 60%;
+}
+
+.form-footer button {
+  width: 10%;
+  padding: 5px;
+  margin-right: 10px;
+  border-radius: 3px;
+}
+
+.form-footer .report-tools button {
+  width: 30%;
+  padding: 5px;
+  margin-right: 10px;
+  border-radius: 3px;
+  justify-content: center;
+}
+
+.form-footer .report-tools .delete-button button{
+  width: 50%;
+  padding: 6.5px;
+  margin-right: 70px;
+  border-radius: 5px;
+  align-content: center;
+  display: flex;
+  border: red solid 1px;
+  background-color: white;
+  cursor: pointer;
+  color: red;
+}
+
+.form-footer .report-tools .delete-button button ion-icon {
+  font-size: 15px;
+  padding-right: 5px;
+}
+
+.form-footer .report-tools .delete-button button:hover {
+  border: red solid 1px;
+  background-color: red;
+  color: white;
+  transition: 400ms;
+  cursor: pointer;
+}
+
+.form-footer .report-tools .button2 {
+  width: 15%;
+}
+
+/* Add & Close button */
+.add-btn {
+  background-color: white;
+  border: 2px solid green;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  transition: 300ms;
+  background-color: green;
+  color: white;
+  cursor: pointer;
+}
+
+.close-btn {
+  background-color: white;
+  border: 2px solid red;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background-color: red;
+  color: white;
+  transition: 300ms;
+  cursor: pointer;
+}
+
+.body-inline-transactions {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 0px solid #888;
+  width: 100%;
+}
+
+.body-inline-transactions input, textarea, select {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+
+
+
+/* ************************************** */
+
+
+
+.user {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.user img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-dropdown-list{
+  position: absolute;
+  top:50px;
+  width: 200px;
+  right: 0 ;
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  max-height: 0;
+  overflow:hidden;
+  transition: max-height 0.5s;
+  z-index: 100;
+
+}
+.profile-dropdown-list.active{
+   max-height: 500px;
+
+}
+.profile-dropdown-list hr{
+   border: .5px solid var(--green);
+
+}
+.profile-dropdown-list-item{
+   padding: 0.5rem 0 0.5rem 1rem;
+}
+.profile-dropdown-list-item:hover{
+   padding-left: 1.2rem;
+   background-color: var(--secondery-light);
+}
+.profile-dropdown-list-item a{
+   display: flex;
+   align-items: center;
+   text-decoration: none;
+   font-size: 0.9rem;
+   font-weight: 500;
+   color: var(--black);
+}
+.profile-dropdown-list-item a i{
+   margin-right: 1rem;
+   font-size: 1.1rem;
+   width: 2.3rem;
+   height: 2.3rem;
+   background-color: var(--secondery);
+   color: var(--white);
+   line-height: 2.3rem;
+   text-align: center;
+   border-radius: 50%;
+   
+
+}
+
+.profile-popup {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100vh; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow);
+  border-radius: 10px;
+  text-align: center;
+  z-index: 1;
+  backdrop-filter: blur(2px);
+}
+.pop{
+  width: 250px;
+  height: 250px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.profile-popup img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile-popup h3, .profile-popup p {
+  margin-bottom: 10px;
+}
+
+.profile-popup button {
+  background-color: var(--secondery);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-popup {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(2px);
+  box-shadow: var(--shadow);
+  border-radius: 10px;
+  z-index: 1;
+}
+.logout-f{
+  width: 350px;
+  height: 300px;
+  background-color: white;
+  text-align: center;
+  border-radius: 10px;
+}
+.logout-popup p {
+  margin-bottom: 20px;
+}
+
+.logout-popup button {
+  background-color: var(--secondery);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 10px;
+}
+#delBtn{
+  background: rgb(189, 1, 1);
+}
+#btncancel{
+  background: rgb(201, 201, 201);
+}
+
+.iconbtn{
+  padding-top: 20px;
+  color: rgb(255, 0, 0);
+  font-size: 50px;
+}
